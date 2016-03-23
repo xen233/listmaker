@@ -1,12 +1,12 @@
 source 'https://rubygems.org'
-
+ruby '2.1.5'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.5.1'
 # Use sqlite3 as the database for Active Record
 group :production do
   gem 'pg'
-end 
+end
 
 group :development do
   gem 'sqlite3'
@@ -54,3 +54,5 @@ end
 gem 'bootstrap-sass', '~> 2.3.1.0'
 
 gem 'devise'
+
+gem 'rails_12factor'

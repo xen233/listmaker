@@ -5,6 +5,11 @@ class MoopeepsController < ApplicationController
   # GET /moopeeps.json
   def index
     @moopeeps = Moopeep.all
+
+    respond_to do |format|
+      format.html
+      format.csv { render text: @moopeeps.to_csv }
+    end
   end
 
   # GET /moopeeps/1
@@ -59,6 +64,11 @@ class MoopeepsController < ApplicationController
       format.html { redirect_to moopeeps_url, notice: 'Moopeep was successfully destroyed.' }
       format.json { head :no_content }
     end
+  end
+
+  def import
+    Moopeep.import(params[:file])
+    redirect_to moopeeps_path, notice: "file uploaded successfully"
   end
 
   private

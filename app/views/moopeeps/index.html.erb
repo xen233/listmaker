@@ -4,36 +4,54 @@
   <h1>Listing Moopeeps</h1>
 
   </div>
+
 <div class="media">
   <div class="media-body">
-    <table class="table table-hover">
-      <thead>
-        <tr>
-          <th>Username</th>
-          <th>Firstname</th>
-          <th>Surname</th>
-          <th>Email</th>
-          <th colspan="3"></th>
-        </tr>
-      </thead>
-
-      <tbody>
-        <% @moopeeps.each do |moopeep| %>
+    <% if current_user %>
+      <table class="table table-hover">
+        <thead>
           <tr>
-            <td><%= moopeep.username %></td>
-            <td><%= moopeep.firstname %></td>
-            <td><%= moopeep.surname %></td>
-            <td><%= moopeep.email %></td>
-            <td><%= link_to 'Show', moopeep, class: 'btn btn-mini' %></td>
-            <td><%= link_to 'Edit', edit_moopeep_path(moopeep), class: 'btn btn-mini btn-success' %></td>
-            <td><%= link_to 'Destroy', moopeep, method: :delete, class: 'btn btn-mini btn-danger', data: { confirm: 'Are you sure?' } %></td>
+            <th>Username</th>
+            <th>Firstname</th>
+            <th>Surname</th>
+            <th>Email</th>
+            <th colspan="3"></th>
           </tr>
-        <% end %>
-      </tbody>
-    </table>
-  </div>
-</div>
+        </thead>
+
+        <tbody>
+          <% @moopeeps.each do |moopeep| %>
+            <tr>
+              <td><%= moopeep.username %></td>
+              <td><%= moopeep.firstname %></td>
+              <td><%= moopeep.surname %></td>
+              <td><%= moopeep.email %></td>
+              <td><%= link_to 'Show', moopeep, class: 'btn btn-mini' %></td>
+              <td><%= link_to 'Edit', edit_moopeep_path(moopeep), class: 'btn btn-mini btn-success' %></td>
+              <td><%= link_to 'Destroy', moopeep, method: :delete, class: 'btn btn-mini btn-danger', data: { confirm: 'Are you sure?' } %></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+
+    <h3>Add new user</h3>
+    <%= link_to 'New Moopeep', new_moopeep_path %>
+
+    <h3>Import CSV</h3>
+    <%= form_tag import_moopeeps_path, multipart: true do %>
+    <%= file_field_tag :file%>
+    <%= submit_tag "upload file", class: 'btn btn-mini' %>
+    <% end %>
+
+    <h3>Download CSV</h3>
+    <%= link_to "Report", moopeeps_path(format: "csv"), class: 'btn btn-mini' %>
+    <% else %>
+    <p>Please sign in</p>
+    <% end %>
+
 
 <br>
 
-<%= link_to 'New Moopeep', new_moopeep_path %>
+
+  </div>
+</div>

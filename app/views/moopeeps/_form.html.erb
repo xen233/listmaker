@@ -1,33 +1,84 @@
-<%= form_for(@moopeep) do |f| %>
-  <% if @moopeep.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@moopeep.errors.count, "error") %> prohibited this moopeep from being saved:</h2>
+<div class="row">
+  <%= form_for @moopeep, html: { class: 'form-horizontal'} do |f| %>
+    <% if @moopeep.errors.any? %>
+      <div id="error_explanation">
+        <h2><%= pluralize(@moopeep.errors.count, "error") %> prohibited this moopeep from being saved:</h2>
 
-      <ul>
-      <% @moopeep.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
+        <ul>
+        <% @moopeep.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+        </ul>
+      </div>
+    <% end %>
+  <p>User details:</p>
+    <div class="control-group">
+      <%= f.label :username, class: 'control-label' %>
+      <div class="controls">
+        <%= f.text_field :username %>
+      </div>
+    </div>
+    <div class="control-group">
+      <%= f.label :firstname, class: 'control-label' %>
+      <div class="controls">
+        <%= f.text_field :firstname %>
+      </div>
+    </div>
+    <div class="control-group">
+      <%= f.label :surname, class: 'control-label' %>
+      <div class="controls">
+        <%= f.text_field :surname %>
+      </div>
+    </div>
+    <div class="control-group">
+      <%= f.label :email, class: 'control-label' %>
+      <div class="controls">
+        <%= f.text_field :email %>
+      </div>
+    </div>
+    <div class="control-group">
+      <p>Course A:</p>
+        <%= f.label 'Name:', class: 'control-label' %>
+      <div class="controls">
+        <%= f.text_field :CourseAName %>
+      </div>
+    </div>
+    <div class="control-group">
+      <%= f.label 'Role', class: 'control-label' %>
+      <div class="controls">
+        <%= f.select(:CourseARole, options_for_select([['Teacher','teacher'],['Student', 'student']]), {include_blank: true}) %>
+      </div>
+    </div>
+    <div class="control-group">
+      <p>Course B:</p>
+      <%= f.label 'Name:', class: 'control-label' %>
+      <div class="controls">
+        <%= f.text_field :CourseBName %>
+      </div>
+    </div>
+    <div class="control-group">
+      <%= f.label 'Role:', class: 'control-label' %>
+      <div class="controls">
+        <%= f.select(:CourseBRole, options_for_select([['Teacher','teacher'],['Student', 'student']]), {include_blank: true}) %>
+      </div>
+    </div>
+    <div class="control-group">
+      <p>Course C:</p>
+      <%= f.label 'Name:', class: 'control-label' %>
+      <div class="controls">
+        <%= f.text_field :CourseCName %>
+      </div>
+    </div>
+    <div class="control-group">
+      <%= f.label 'Role:', class: 'control-label' %>
+        <div class="controls">
+      <%= f.select(:CourseCRole, options_for_select([['Teacher','teacher'],['Student', 'student']]), {include_blank: true}) %>
+      </div>
+    </div>
+    <div class="control-group">
+      <div class="controls">
+        <%= f.submit %>
+      </div>
     </div>
   <% end %>
-
-  <div class="field">
-    <%= f.label :username %><br>
-    <%= f.text_field :username %>
-  </div>
-  <div class="field">
-    <%= f.label :firstname %><br>
-    <%= f.text_field :firstname %>
-  </div>
-  <div class="field">
-    <%= f.label :surname %><br>
-    <%= f.text_field :surname %>
-  </div>
-  <div class="field">
-    <%= f.label :email %><br>
-    <%= f.text_field :email %>
-  </div>
-  <div class="actions">
-    <%= f.submit %>
-  </div>
-<% end %>
+</div>

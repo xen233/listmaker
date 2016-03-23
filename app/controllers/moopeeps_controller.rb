@@ -79,6 +79,6 @@ class MoopeepsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def moopeep_params
-      params.require(:moopeep).permit(:username, :firstname, :surname, :email)
+      params.require(:moopeep).permit(:username, :firstname, :surname, :email, :CourseAName, :CourseARole, :CourseBName, :CourseBRole, :CourseCName, :CourseCRole)
     end
 end

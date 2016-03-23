@@ -1,0 +1,24 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Username:</strong>
+  <%= @moopeep.username %>
+</p>
+
+<p>
+  <strong>Firstname:</strong>
+  <%= @moopeep.firstname %>
+</p>
+
+<p>
+  <strong>Surname:</strong>
+  <%= @moopeep.surname %>
+</p>
+
+<p>
+  <strong>Email:</strong>
+  <%= @moopeep.email %>
+</p>
+
+<%= link_to 'Edit', edit_moopeep_path(@moopeep) %> |
+<%= link_to 'Back', moopeeps_path %>
